@@ -134,36 +134,36 @@ The analysis covers various aspects of financial data, including:
     **DAX Query:**
     ```DAX
     Income and Credit_Limit correlation for Client_Num = 
-      VAR __CORRELATION_TABLE = VALUES('customer'[Client_Num])
+      VAR __CORRELATION_TABLE = VALUES('Customers'[Client_Num])
       VAR __COUNT =
       	COUNTX(
       		KEEPFILTERS(__CORRELATION_TABLE),
-      		CALCULATE(SUM('customer'[Income]) * SUM('credit_card'[Credit_Limit]))
+      		CALCULATE(SUM('Customers'[Income]) * SUM('Credit Card'[Credit_Limit]))
       	)
       VAR __SUM_X =
       	SUMX(
       		KEEPFILTERS(__CORRELATION_TABLE),
-      		CALCULATE(SUM('customer'[Income]))
+      		CALCULATE(SUM('Customers'[Income]))
       	)
       VAR __SUM_Y =
       	SUMX(
       		KEEPFILTERS(__CORRELATION_TABLE),
-      		CALCULATE(SUM('credit_card'[Credit_Limit]))
+      		CALCULATE(SUM('Credit Card'[Credit_Limit]))
       	)
       VAR __SUM_XY =
       	SUMX(
       		KEEPFILTERS(__CORRELATION_TABLE),
-      		CALCULATE(SUM('customer'[Income]) * SUM('credit_card'[Credit_Limit]) * 1.)
+      		CALCULATE(SUM('Customers'[Income]) * SUM('Credit Card'[Credit_Limit]) * 1.)
       	)
       VAR __SUM_X2 =
       	SUMX(
       		KEEPFILTERS(__CORRELATION_TABLE),
-      		CALCULATE(SUM('customer'[Income]) ^ 2)
+      		CALCULATE(SUM('Customers'[Income]) ^ 2)
       	)
       VAR __SUM_Y2 =
       	SUMX(
       		KEEPFILTERS(__CORRELATION_TABLE),
-      		CALCULATE(SUM('credit_card'[Credit_Limit]) ^ 2)
+      		CALCULATE(SUM('Credit Card'[Credit_Limit]) ^ 2)
       	)
       RETURN
       	DIVIDE(
